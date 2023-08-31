@@ -11,17 +11,26 @@ import Login from "./Components/Login";
 import RestaurantMenu from "./Components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./Components/CartPage";
+import SignUp from "./Components/SignUp";
+import SignIn from "./Components/SignIn";
 
 // call createBrowserRouter for routing different pages
 const appRouter = createBrowserRouter([
   {
-    path: "/", // show path for routing
+   path:"/",
+   element:<SignUp/>,
+  },{
+    path:"/login",
+    element:<SignIn/>
+  },
+  {
+    path: "/app", // show path for routing
     element: <App />, // show component for particular path
     errorElement: <Error />, // show error component for path is different
     children: [
       // show children component for routing
       {
-        path: "/",
+        path: "/app",
         element: <Body />,
       },
       {
@@ -33,7 +42,7 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "restaurant/:resId",
+        path: "/app/restaurant/:resId",
         element: <RestaurantMenu />,
       },
       {

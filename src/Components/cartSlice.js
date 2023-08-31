@@ -7,10 +7,11 @@ const cartSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
+      alert(action.payload.name);
       state.items.push(action.payload);
     },
     removeItem: (state, action) => {
-      state.items.pop();
+      state.items.splice(state.items.findIndex((obj) => obj.name == action.payload.name),1)
     },
     clearCart: (state) => {
       state.items = [];

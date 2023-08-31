@@ -1,11 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { ITEM_IMG_CDN_URL } from '../constants';
+import React from "react";
+import { useSelector } from "react-redux";
+import { ITEM_IMG_CDN_URL } from "../constants";
 import { FaRupeeSign } from "react-icons/fa";
+import { removeItem } from "./cartSlice";
+import { useDispatch } from "react-redux";
 
 function CartPage() {
+  const cartItems = useSelector((store) => store.cart.items);
 
-const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
+
+  function handleRemoveItem(item) {
+    dispatch(removeItem(item));
+  }
 
   return (
     <>
@@ -31,7 +38,19 @@ const cartItems = useSelector((store) => store.cart.items);
                   <h3 className="cart-item-name">{item.name}</h3>
                 </div>
                 <div>
-                  <button className="remove-btn">Remove</button>
+                  <button
+                    className="p2 border-2 bg-green-900"
+                    onClick={() =>
+                      handleRemoveItem({
+                        name: item.name,
+                        image: item.imageId,
+                        discription: item.discription,
+                        price: item?.price / 100,
+                      })
+                    }
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             </div>
@@ -66,5 +85,3 @@ const cartItems = useSelector((store) => store.cart.items);
 }
 
 export default CartPage;
-
-

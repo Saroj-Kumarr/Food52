@@ -28,10 +28,10 @@ a {
   --light-text-color: #545454;
   --light-text-title: #353535;
   --light-green: #00ad1d;
-  --dark-green: #38ada9;
-  --orange: #16a085;
-  --light-orange: #1abc9c;
-  --dark-orange: #079992;
+  --dark-green: #14532d;
+  --orange: #14532d;
+  --light-orange: #14532d;
+  --dark-orange: #14532d;
   --x-dark-orange: rgb(157, 42, 1);
   --light-red: rgb(236, 56, 56);
   --white: #fff;
@@ -39,7 +39,7 @@ a {
   --light-black: rgb(23, 23, 23);
   --light-blue: #0463ac;
   --dark-blue: #070062;
-  --font-color:#34495E;
+  --font-color: #34495e;
 }
 /* create global variable with :root selector End*/
 
@@ -59,8 +59,8 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
   overflow-y: hidden;
+  z-index:1;
 }
 
 .logo {
@@ -88,18 +88,14 @@ a {
 .nav-items > ul > li:hover,
 .nav-items > ul > li:hover .logout-btn,
 .nav-items > ul > li:hover .login-btn {
-  background-color: var(--orange);
   border-radius: 5px;
   cursor: pointer;
-  color: var(--white);
 }
 
 .nav-items > ul > li .logout-btn,
 .nav-items > ul > li .login-btn {
-  color: var(--light-text-color);
   border: none;
   border-radius: 5px;
-  background-color: Transparent;
   font-size: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -107,7 +103,6 @@ a {
 
 .nav-items > ul > li .logout-btn:hover,
 .nav-items > ul > li .login-btn:hover {
-  color: var(--white);
 }
 
 /* nav items CSS End*/
@@ -128,8 +123,8 @@ a {
 .search-container .search-input {
   width: 40%;
   box-sizing: border-box;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
+  /* border-bottom-left-radius: px;
+  border-top-left-radius: 5px; */
   background-color: #ffffff;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 8px 15px 8px 12px;
@@ -147,40 +142,16 @@ a {
   border: 1px solid var(--dark-orange);
 }
 .search-container .search-btn {
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
   background-color: var(--dark-orange);
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   color: #ffffff;
-  padding: 12px 22px;
+  padding: 11px 22px;
   margin-left: -4px;
   cursor: pointer;
   border: none;
   outline: none;
 }
 .search-container .search-btn:hover {
-  background-color: var(--dark-green);
-}
-
-.right-profile .btn {
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: var(--dark-orange);
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  color: #ffffff;
-  padding: 12px 22px;
-  margin-left: -4px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-}
-
-.right-profile h3 span {
-  color: var(--dark-orange);
-}
-
-.right-profile .btn:hover {
   background-color: var(--dark-green);
 }
 
@@ -202,21 +173,26 @@ a {
   align-items: center;
   justify-content: center;
   align-self: stretch;
+  position: relative;
+  top: -20px;
 }
 
 .card {
   width: 240px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
   padding: 10px;
-  margin: 20px;
+  margin: 11px 20px;
   cursor: pointer;
   transition: transform 200ms;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: scale(1.07);
+  transform: scale(1.05);
   border: 4px solid #d6dbdf;
+  transition-duration: 500ms;
 }
 
 .card h3 {
@@ -301,7 +277,9 @@ a {
   font-size: 15px;
   max-width: 540px;
 }
+
 .restaurant-details {
+  border: 1px solid black;
   display: flex;
   margin-top: 18px;
   justify-content: space-between;
@@ -314,6 +292,7 @@ a {
   font-size: 16px;
   max-width: 340px;
 }
+
 .restaurant-rating {
   display: flex;
   align-items: center;
@@ -335,14 +314,10 @@ a {
 .menu-title-wrap {
   padding: 20px;
 }
-.menu-title-wrap .menu-title {
-  color: var(--light-text-color);
-}
+
 .menu-count {
   margin-top: 10px;
   line-height: 1.3;
-  color: rgba(40, 44, 63, 0.45);
-  font-size: 1rem;
 }
 
 .menu-items-list {
@@ -401,7 +376,6 @@ a {
 }
 .add-btn {
   background-color: var(--orange);
-  color: var(--text-color);
   padding: 8px 25px;
   cursor: pointer;
   outline: none;
@@ -1084,121 +1058,119 @@ a {
   height: 76vh;
 }
 
-.card-page-inner{
-  display:flex;
+.card-page-inner {
+  display: flex;
 }
 
- .cart-page-items {
-  position:relative;
-  left:300px;
-  width: 50%; 
-  height:125px;
+.cart-page-items {
+  position: relative;
+  left: 300px;
+  width: 50%;
+  height: 125px;
   border-radius: 10px;
   padding: 10px;
   margin: 20px;
   cursor: pointer;
   transition: transform 200ms;
-box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
-display:flex;
-margin-left:-80px;
+  box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
+  display: flex;
+  margin-left: -80px;
 }
 
-.cart-item-price{
-  margin-left:20px;
+.cart-item-price {
+  margin-left: 20px;
 }
 
-.cart-item-name{
-  margin-left:20px;
+.cart-item-name {
+  margin-left: 20px;
 }
 
-.rupees-icon{
-  font-size:20px;
+.rupees-icon {
+  font-size: 20px;
 }
 
-.remove-btn{
-   background-color: var(--orange);
+.remove-btn {
+  background-color: var(--orange);
   color: var(--text-color);
-  padding:5px 15px;
+  padding: 5px 15px;
   cursor: pointer;
   outline: none;
   border-color: var(--dark-orange);
   margin-top: 10px;
   border-radius: 5px;
-  margin-left:20px;
+  margin-left: 20px;
 }
 
-.cart-payment{
-  display:flex;
-  justify-content:flex-end;
-  position:relative;
-  top:-560px;
-  left:-170px;
+.cart-payment {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: -560px;
+  left: -170px;
 }
 
-.cart-paid{
-box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
-   position:fixed;
-    width:320px;
-   height:550px;
-   border-radius:20px;
+.cart-paid {
+  box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
+  position: fixed;
+  width: 320px;
+  height: 550px;
+  border-radius: 20px;
 }
 
-.buy-btn{
-   background-color: var(--orange);
+.buy-btn {
+  background-color: var(--orange);
   color: var(--text-color);
-  padding:5px 15px;
+  padding: 5px 15px;
   cursor: pointer;
   outline: none;
   border-color: var(--dark-orange);
   border-radius: 5px;
-  margin-left:20px;
-  width:90%;
-  position:relative;
-  top:-200px;
+  margin-left: 20px;
+  width: 90%;
+  position: relative;
+  top: -200px;
 }
 
-
-.cart-paid h2{
-  color:var(--font-color);
-  text-align:center;
-  margin:5px;
-
+.cart-paid h2 {
+  color: var(--font-color);
+  text-align: center;
+  margin: 5px;
 }
 
-.cart-paid h3{
-  margin:5px;
-  color:var(--font-color);
-  position:relative;
-  top:20px;
- margin: 30px 0;
- margin-left:10px;
+.cart-paid h3 {
+  margin: 5px;
+  color: var(--font-color);
+  position: relative;
+  top: 20px;
+  margin: 30px 0;
+  margin-left: 10px;
 }
 
-.item-price{
-  position:relative;
-  left:120px;
+.item-price {
+  position: relative;
+  left: 120px;
 }
 
-.cart-paid .buy-btn{
-  position:relative;
-  top:235px;
+.cart-paid .buy-btn {
+  position: relative;
+  top: 235px;
 }
 
-.item-price h5{
-  position:relative;
-  top:50px;
+.item-price h5 {
+  position: relative;
+  top: 50px;
 }
 
-.cart-paid h4{
-  margin:5px;
-  color:var(--font-color);
-  position:relative;
-  top:30px;
+.cart-paid h4 {
+  margin: 5px;
+  color: var(--font-color);
+  position: relative;
+  top: 30px;
 }
 
-.cart-paid  h5{
-  position:relative;
-  top:50px;
-  color:var(--font-color);
-  font-size:20px;
+.cart-paid h5 {
+  position: relative;
+  top: 50px;
+  color: var(--font-color);
+  font-size: 20px;
 }

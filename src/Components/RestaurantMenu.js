@@ -9,10 +9,13 @@ import {
 import { MenuShimmer } from "./Shimmer";
 import useResMenuData from "../Hooks/useResMenuData"; // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "./cartSlice";
+import { addItem,removeItem } from "./cartSlice";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
-    const dispatch = useDispatch();
+  const [test, setTest] = useState(false);
+  const dispatch = useDispatch();
   const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
   const [restaurant, menuItems] = useResMenuData(
     swiggy_menu_api_URL,
@@ -21,21 +24,26 @@ const RestaurantMenu = () => {
     MENU_ITEM_TYPE_KEY
   );
 
-  
-
-
   function handleAddItem(item) {
-    alert("Added Successfully ✅")
     dispatch(addItem(item));
+    setTest(true);
   }
 
+  function handleRemoveItem(item) {
+   dispatch(removeItem(item));
+  }
 
+  useEffect(() => {
+    const settime = setTimeout(() => {
+      setTest(false);
+    }, 500);
+  }, [test]);
 
   return !restaurant ? (
     <MenuShimmer />
   ) : (
     <div className="restaurant-menu">
-      <div className="restaurant-summary">
+      <div className="restaurant-summary fixed w-full z-10">
         <img
           className="restaurant-img"
           src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
@@ -55,7 +63,6 @@ const RestaurantMenu = () => {
                   : { color: "white" }
               }
             >
-              <i className="fa-solid fa-star"></i>
               <span>{restaurant?.avgRating}</span>
             </div>
             <div className="restaurant-rating-slash">|</div>
@@ -66,12 +73,20 @@ const RestaurantMenu = () => {
         </div>
       </div>
 
-      <div className="restaurant-menu-content">
+      <div>
+        <div className="menu-title-wrap fixed w-full border-2 border-black h-20 overflow-hidden z-20 bg-black top-[270px]">
+          <h3 className="menu-title -mt-4  w-full  text-center text-xl font-bold text-white">
+            Recommended <span className="text-[#F6931E]">Items</span>
+          </h3>
+          <p className="menu-count  relative -top-2 text-center font-semibold text-white">
+            {menuItems.length} ITEMS
+          </p>
+          {test && <h1 className="text-white relative -top-3 text-center ">Item successfully added ✅</h1>}
+        </div>
+      </div>
+
+      <div className="restaurant-menu-content relative top-[250px]">
         <div className="menu-items-container">
-          <div className="menu-title-wrap">
-            <h3 className="menu-title">Recommended</h3>
-            <p className="menu-count">{menuItems.length} ITEMS</p>
-          </div>
           <div className="menu-items-list">
             {menuItems.map((item) => (
               <div className="menu-item" key={item?.id}>
@@ -95,7 +110,25 @@ const RestaurantMenu = () => {
                       alt={item?.name}
                     />
                   )}
-                  <button className="add-btn" onClick={()=>handleAddItem({name:item.name,image:item.imageId,discription:item.discription,price:item?.price / 100})}> ADD +</button>
+                  <button
+                    className="add-btn text-white font-bold"
+                    onClick={() =>
+                      handleAddItem({
+                        name: item.name,
+                        image: item.imageId,
+                        discription: item.discription,
+                        price: item?.price / 100,
+                      })
+                    }
+                  >
+                    ADD +
+                  </button>
+                  <button   className="p2 border-2 bg-green-900" onClick={()=>handleRemoveItem({
+                        name: item.name,
+                        image: item.imageId,
+                        discription: item.discription,
+                        price: item?.price / 100,
+                      })}>Remove</button>
                 </div>
               </div>
             ))}
@@ -107,6 +140,3 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
-
-
-

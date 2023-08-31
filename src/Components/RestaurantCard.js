@@ -16,7 +16,7 @@ const RestaurantCard = ({
       <h3>{name}</h3>
       <h5>{cuisines.join(", ")}</h5>
       <h5>{areaName}</h5>
-      <span>
+      <span >
         <h4
           style={
             avgRatingString < 4

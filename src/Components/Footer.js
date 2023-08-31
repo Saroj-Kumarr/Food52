@@ -2,28 +2,28 @@
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div className="footer">
-      <div className="social-mediaa">
+    <div className="footer relative top-2 shadow-xl">
+      <div className="social-mediaa flex">
         <a href="https://github.com/Saroj-Mali">
           <img
-            className="github"
+            className="github "
             src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
             alt="github"
           />
         </a>
         <a href="https://www.linkedin.com/in/saroj-kumar-b20bb3281/">
           <img
-            className="linkedin"
+            className="w-7 relative top-[4px]"
             src="https://static-00.iconduck.com/assets.00/linkedin-icon-1024x1024-net2o24e.png"
           />
         </a>
         <img
-          className="insta"
+          className="w-8 h-8  relative -bottom-[2px] "
           src="https://img.freepik.com/premium-vector/round-instagram-logo-isolated-white-background_469489-898.jpg"
           alt="instagram"
         />
       </div>
-      Created By :<i className="fa-solid fa-heart"></i>
+      Created By ❤️
       <a
         href="https://github.com/Saroj-Mali"
         target="_blank"

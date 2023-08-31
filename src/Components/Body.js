@@ -16,10 +16,6 @@ const Body = () => {
   const [allRestaurants, FilterRes] = useResData(swiggy_api_URL);
   const [filteredRestaurants, setFilteredRestaurants] = useState(null);
   const isOnline = useOnline();
-  // if user is not Online then return UserOffline component
-  if (!isOnline) {
-    return <UserOffline />;
-  }
 
   // use searchData function and set condition if data is empty show error message
   const searchData = (searchText, restaurants) => {
@@ -43,21 +39,26 @@ const Body = () => {
 
   return (
     <>
-      <div className="search-container">
+      <div className="search-container relative z-20 -top-[60px]">
         <input
           type="text"
-          className="search-input"
-          placeholder="Search a restaurant you want..."
+          className="search-input fixed rounded-l-xl"
+          placeholder="Search here....."
           value={searchText}
           // update the state variable searchText when we typing in input box
           onChange={(e) => {
             setSearchText(e.target.value);
             // when user will enter the data, it automatically called searchData function so it work same as when you click on Search button
-            searchData(e.target.value, allRestaurants);
+            // searchData(e.target.value, allRestaurants);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              searchData(searchText, allRestaurants);
+            }
           }}
         ></input>
         <button
-          className="search-btn"
+          className="search-btn fixed rounded-r-xl right-96"
           onClick={() => {
             // user click on button searchData function is called
             searchData(searchText, allRestaurants);
@@ -78,7 +79,7 @@ const Body = () => {
             (restaurant) => {
               return (
                 <Link
-                  to={"/restaurant/" + restaurant?.info?.id}
+                  to={"/app/restaurant/" + restaurant?.info?.id}
                   key={restaurant?.info?.id}
                 >
                   {/* if we click on any restaurant card it will redirect to that restaurant menu page */}
