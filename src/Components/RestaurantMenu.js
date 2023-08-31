@@ -9,12 +9,14 @@ import {
 import { MenuShimmer } from "./Shimmer";
 import useResMenuData from "../Hooks/useResMenuData"; // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
 import { useDispatch, useSelector } from "react-redux";
-import { addItem,removeItem } from "./cartSlice";
+import { addItem, removeItem, addMessage, removeMessage } from "./cartSlice";
 import { useEffect } from "react";
 import { useState } from "react";
+import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 
 const RestaurantMenu = () => {
-  const [test, setTest] = useState(false);
+  // const [addSuccess, setAddSuccess] = useState();
+  // const [removeSuccess, setRemoveSuccess] = useState();
   const dispatch = useDispatch();
   const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
   const [restaurant, menuItems] = useResMenuData(
@@ -24,20 +26,34 @@ const RestaurantMenu = () => {
     MENU_ITEM_TYPE_KEY
   );
 
+  const addShow = useSelector((store) => store.cart.addSuccess);
+  const removeShow = useSelector((store) => store.cart.removeSuccess);
+
   function handleAddItem(item) {
     dispatch(addItem(item));
-    setTest(true);
+  }
+
+  function handleAddMessage() {
+    dispatch(addMessage(true));
   }
 
   function handleRemoveItem(item) {
-   dispatch(removeItem(item));
+    dispatch(removeItem(item));
   }
 
   useEffect(() => {
     const settime = setTimeout(() => {
-      setTest(false);
-    }, 500);
-  }, [test]);
+      dispatch(addMessage(false));
+    }, 1000);
+  });
+
+  useEffect(() => {
+    const settime = setTimeout(() => {
+      dispatch(removeMessage(false));
+    }, 1000);
+  });
+
+  console.log(removeShow);
 
   return !restaurant ? (
     <MenuShimmer />
@@ -81,7 +97,16 @@ const RestaurantMenu = () => {
           <p className="menu-count  relative -top-2 text-center font-semibold text-white">
             {menuItems.length} ITEMS
           </p>
-          {test && <h1 className="text-white relative -top-3 text-center ">Item successfully added ✅</h1>}
+          {addShow && (
+            <h1 className="text-white relative -top-3 text-center ">
+              Item successfully added ✅
+            </h1>
+          )}
+          {removeShow && (
+            <h1 className="text-white relative -top-3 text-center ">
+              Item successfully removed ❌
+            </h1>
+          )}
         </div>
       </div>
 
@@ -105,30 +130,46 @@ const RestaurantMenu = () => {
                 <div className="menu-img-wrapper">
                   {item?.imageId && (
                     <img
-                      className="menu-item-img"
+                      className="menu-item-img relative -left-2 "
                       src={ITEM_IMG_CDN_URL + item?.imageId}
                       alt={item?.name}
                     />
                   )}
-                  <button
-                    className="add-btn text-white font-bold"
-                    onClick={() =>
-                      handleAddItem({
-                        name: item.name,
-                        image: item.imageId,
-                        discription: item.discription,
-                        price: item?.price / 100,
-                      })
-                    }
-                  >
-                    ADD +
-                  </button>
-                  <button   className="p2 border-2 bg-green-900" onClick={()=>handleRemoveItem({
-                        name: item.name,
-                        image: item.imageId,
-                        discription: item.discription,
-                        price: item?.price / 100,
-                      })}>Remove</button>
+
+                  <div className="relative z-10 left-1">
+                    <button
+                      className="text-[#F6931E] text-3xl p-1"
+                      onClick={() => {
+                        handleAddItem({
+                          name: item.name,
+                          image: item.imageId,
+                          discription: item.discription,
+                          price: item?.price / 100,
+                        });
+                        handleAddMessage();
+                      }}
+                    >
+                      <FaPlusSquare />
+                    </button>
+
+                    <button className="text-lg bg-green-800 relative -top-[8px] text-[#F6931E] border-2 bg-green-900 p-[2px] rounded-lg font-bold">
+                      Item
+                    </button>
+
+                    <button
+                      className="text-3xl text-[#F6931E] p-1"
+                      onClick={() => {
+                        handleRemoveItem({
+                          name: item.name,
+                          image: item.imageId,
+                          discription: item.discription,
+                          price: item?.price / 100,
+                        });
+                      }}
+                    >
+                      <FaMinusSquare />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

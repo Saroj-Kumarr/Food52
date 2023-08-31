@@ -4,14 +4,27 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
+    addSuccess: false,
+    removeSuccess: false,
   },
   reducers: {
     addItem: (state, action) => {
-      alert(action.payload.name);
       state.items.push(action.payload);
     },
     removeItem: (state, action) => {
-      state.items.splice(state.items.findIndex((obj) => obj.name == action.payload.name),1)
+      const index = state.items.findIndex(
+        (obj) => obj.name == action.payload.name
+      );
+      if (index != -1){
+        state.items.splice(index, 1);
+        state.removeSuccess = true;
+      }
+    },
+    addMessage: (state, action) => {
+      state.addSuccess = action.payload;
+    },
+    removeMessage: (state, action) => {
+      state.removeSuccess = false;
     },
     clearCart: (state) => {
       state.items = [];
@@ -19,6 +32,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, clearCart } = cartSlice.actions;
+export const { addItem, removeItem, addMessage, removeMessage, clearCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
