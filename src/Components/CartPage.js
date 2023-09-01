@@ -4,10 +4,13 @@ import { ITEM_IMG_CDN_URL } from "../constants";
 import { FaRupeeSign } from "react-icons/fa";
 import { removeItem } from "./cartSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CartPage() {
   const cartItems = useSelector((store) => store.cart.items);
   const [price, setPrice] = useState(0);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -23,6 +26,10 @@ function CartPage() {
     }, 0);
     setPrice(tPrice);
   });
+
+  function orderPageRoute() {
+    navigate("/app/orderpage");
+  }
 
   return (
     <>
@@ -69,7 +76,9 @@ function CartPage() {
       </div>
       <div className="cart-payment">
         <div className="cart-paid">
-      <h2 className="text-3xl text-green-900 font-bold">Price <span className="text-[#F6931E]">Details</span></h2>
+          <h2 className="text-3xl text-green-900 font-bold">
+            Price <span className="text-[#F6931E]">Details</span>
+          </h2>
           <hr />
           <h3 className="-mt-4">
             Price ({cartItems.length}) items{" "}
@@ -84,13 +93,16 @@ function CartPage() {
           </h3>
 
           <h3>
-            Total Amount <span className="item-price pl-7">{price+149+400}</span>
+            Total Amount{" "}
+            <span className="item-price pl-7">{price + 149 + 400}</span>
           </h3>
 
-          <button className="relative top-[75px] text-center w-[310px] bg-green-900 rounded-xl w-[300px] ml-2 p-1 text-white font-bold ">Proceed to Buy</button>
-        
-
-
+          <button
+            onClick={() => orderPageRoute()}
+            className="relative top-[75px] text-center w-[310px] bg-green-900 rounded-xl w-[300px] ml-2 p-1 text-white font-bold "
+          >
+            Proceed to Buy
+          </button>
         </div>
       </div>
     </>

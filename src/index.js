@@ -13,15 +13,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./Components/CartPage";
 import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
+import OrderPage from "./Components/OrderPage";
 
 // call createBrowserRouter for routing different pages
 const appRouter = createBrowserRouter([
   {
-   path:"/",
-   element:<SignUp/>,
-  },{
-    path:"/login",
-    element:<SignIn/>
+    path: "/",
+    element: <SignUp />,
+  },
+  {
+    path: "/login",
+    element: <SignIn />,
   },
   {
     path: "/app", // show path for routing
@@ -48,6 +50,10 @@ const appRouter = createBrowserRouter([
       {
         path: "cart",
         element: <CartPage />,
+      },
+      {
+        path: "orderpage",
+        element: <OrderPage />,
       },
     ],
   },
