@@ -27,7 +27,7 @@ function OrderPage() {
   // }, 1000);
 
   return (
-    <div className="flex items-center justify-center  relative w-full top-20 h-[89vh] bg-green-900">
+    <div className="flex items-center justify-center  relative w-full top-20 h-[89vh] bg-green-900 border-2 border-black">
       {show && (
         <div className=" p-4">
           <div>

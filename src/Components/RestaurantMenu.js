@@ -31,6 +31,25 @@ const RestaurantMenu = () => {
   const removeShow = useSelector((store) => store.cart.removeSuccess);
 
   function handleAddItem(item) {
+    setTimeout(() => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Item added successfully ✅",
+      });
+    }, 1000);
+
     dispatch(addItem(item));
   }
 
@@ -39,42 +58,6 @@ const RestaurantMenu = () => {
   }
 
   function handleRemoveItem(item) {
-    
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success m-2',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-    
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your order has been removed.',
-          'success'
-        )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
-      }
-    })
-
     dispatch(removeItem(item));
   }
 
@@ -89,8 +72,6 @@ const RestaurantMenu = () => {
       dispatch(removeMessage(false));
     }, 1000);
   });
-
-  console.log(removeShow);
 
   return !restaurant ? (
     <MenuShimmer />

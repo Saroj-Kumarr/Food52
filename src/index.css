@@ -711,6 +711,7 @@ a {
   margin-top: 40px;
   color: #787878;
 }
+
 .profile-repo-items {
   display: flex;
   align-items: center;
@@ -1119,7 +1120,6 @@ a {
   border-radius: 20px;
 }
 
-
 .cart-paid h2 {
   /* color: var(--font-color); */
   text-align: center;
@@ -1128,7 +1128,7 @@ a {
 
 .cart-paid h3 {
   margin: 5px;
-  color:var(--font-color);
+  color: var(--font-color);
   position: relative;
   top: 20px;
   margin: 20px 0;
