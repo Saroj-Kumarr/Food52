@@ -20,12 +20,7 @@ const cartSlice = createSlice({
         state.removeSuccess = true;
       }
     },
-    addMessage: (state, action) => {
-      state.addSuccess = action.payload;
-    },
-    removeMessage: (state, action) => {
-      state.removeSuccess = false;
-    },
+   
     clearCart: (state) => {
       state.items = [];
     },

@@ -9,7 +9,7 @@ import {
 import { MenuShimmer } from "./Shimmer";
 import useResMenuData from "../Hooks/useResMenuData"; // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem, addMessage, removeMessage } from "./cartSlice";
+import { addItem, removeItem } from "./cartSlice";
 import { useEffect } from "react";
 import { useState } from "react";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
@@ -27,12 +27,11 @@ const RestaurantMenu = () => {
     MENU_ITEM_TYPE_KEY
   );
 
-  const addShow = useSelector((store) => store.cart.addSuccess);
-  const removeShow = useSelector((store) => store.cart.removeSuccess);
-
   function handleAddItem(item) {
     setTimeout(() => {
       const Toast = Swal.mixin({
+        color: "#4ade80",
+
         toast: true,
         position: "top",
         showConfirmButton: false,
@@ -48,30 +47,48 @@ const RestaurantMenu = () => {
         icon: "success",
         title: "Item added successfully ✅",
       });
-    }, 1000);
-
-    dispatch(addItem(item));
-  }
-
-  function handleAddMessage() {
-    dispatch(addMessage(true));
+      dispatch(addItem(item));
+    }, 500);
   }
 
   function handleRemoveItem(item) {
-    dispatch(removeItem(item));
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "bg-[#22c55e] p-1 m-1 shadow-2xl rounded-[10px] text-xl text-white border-2 border-green-400",
+        cancelButton: "bg-red-600 p-1 m-1 shadow-2xl rounded-[10px] text-xl text-white border-2 border-red-200",
+       
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        color: "",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your order has been removed.",
+            "success"
+          );
+          dispatch(removeItem(item));
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your imaginary file is safe :)",
+            "error"
+          );
+        }
+      });
   }
-
-  useEffect(() => {
-    const settime = setTimeout(() => {
-      dispatch(addMessage(false));
-    }, 1000);
-  });
-
-  useEffect(() => {
-    const settime = setTimeout(() => {
-      dispatch(removeMessage(false));
-    }, 1000);
-  });
 
   return !restaurant ? (
     <MenuShimmer />
@@ -115,16 +132,6 @@ const RestaurantMenu = () => {
           <p className="menu-count  relative -top-2 text-center font-semibold text-white">
             {menuItems.length} ITEMS
           </p>
-          {addShow && (
-            <h1 className="text-white relative -top-3 text-center ">
-              Item successfully added ✅
-            </h1>
-          )}
-          {removeShow && (
-            <h1 className="text-white relative -top-3 text-center ">
-              Item successfully removed ❌
-            </h1>
-          )}
         </div>
       </div>
 
@@ -164,7 +171,6 @@ const RestaurantMenu = () => {
                           discription: item.discription,
                           price: item?.price / 100,
                         });
-                        handleAddMessage();
                       }}
                     >
                       <FaPlusSquare />
