@@ -31,7 +31,6 @@ const RestaurantMenu = () => {
     setTimeout(() => {
       const Toast = Swal.mixin({
         color: "#4ade80",
-
         toast: true,
         position: "top",
         showConfirmButton: false,
@@ -54,8 +53,8 @@ const RestaurantMenu = () => {
   function handleRemoveItem(item) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "bg-[#22c55e] p-1 m-1 shadow-2xl rounded-[10px] text-xl text-white border-2 border-green-400",
-        cancelButton: "bg-red-600 p-1 m-1 shadow-2xl rounded-[10px] text-xl text-white border-2 border-red-200",
+        confirmButton: "bg-[#22c55e] p-1 px-3 m-1 shadow-2xl rounded-[10px] text-md text-white border-2 border-green-400",
+        cancelButton: "bg-red-600 p-1 px-3 m-1 shadow-2xl rounded-[10px] text-md text-white border-2 border-red-200",
        
       },
       buttonsStyling: false,
@@ -93,8 +92,8 @@ const RestaurantMenu = () => {
   return !restaurant ? (
     <MenuShimmer />
   ) : (
-    <div className="restaurant-menu">
-      <div className="restaurant-summary fixed w-full z-10">
+    <div className="restaurant-menu border-2 relative">
+      <div className="restaurant-summary fixed w-full">
         <img
           className="restaurant-img"
           src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
@@ -161,7 +160,7 @@ const RestaurantMenu = () => {
                     />
                   )}
 
-                  <div className="relative z-10 left-1">
+                  <div className="relative left-1">
                     <button
                       className="text-[#F6931E] text-3xl p-1"
                       onClick={() => {
@@ -181,7 +180,7 @@ const RestaurantMenu = () => {
                     </button>
 
                     <button
-                      className="text-3xl text-[#F6931E] p-1"
+                      className="text-3xl relative text-[#F6931E] p-1"
                       onClick={() => {
                         handleRemoveItem({
                           name: item.name,
@@ -200,6 +199,10 @@ const RestaurantMenu = () => {
           </div>
         </div>
       </div>
+
+      
+
+
     </div>
   );
 };
