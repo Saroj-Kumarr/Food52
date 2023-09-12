@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import boy from "../Images/dboy1.jpg";

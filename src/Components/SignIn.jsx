@@ -1,14 +1,13 @@
 import React from "react";
-import { app } from "../firebase";
+import { app } from "firebase";
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase";
+import {  getAuth, } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import boy from "../Images/dboy1.jpg";
-import { FaUserCircle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { BiSolidLock } from "react-icons/bi";
 import leaf from "../Images/leaf2.png";
-import { Link } from "react-router-dom";
 
 function SignIn() {
   const [data, setData] = useState({});
