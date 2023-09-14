@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase";
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import boy from "../Images/dboy1.jpg";
@@ -51,7 +50,7 @@ function SignUp() {
               Sign <span className="text-green-900">Up</span>
             </h1>
 
-            <FaUserCircle className="text-green-900 absolute  text-xl left-[820px] top-[286px] z-50" />
+            <FaUserCircle className="text-green-900 absolute  text-xl left-[810px] top-[286px] z-50" />
 
             <input
               className="block text-green-900 border-b-2 border-green-900 focus:outline-none text-md text-green-900  p-2 m-1"
@@ -61,7 +60,7 @@ function SignUp() {
               required
               placeholder="username"
             />
-            <MdEmail className="left-[820px] top-[333px] text-green-900 absolute top-7  text-xl" />
+            <MdEmail className="left-[810px] top-[333px] text-green-900 absolute top-7  text-xl" />
 
             <input
               className="block border-b-2 text-green-900 border-green-900 focus:outline-none text-md align-middle p-2 m-1"
@@ -74,7 +73,7 @@ function SignUp() {
                 handleInput(event);
               }}
             />
-            <BiSolidLock className="left-[820px] top-[374px] text-green-900 absolute top-7 text-2xl" />
+            <BiSolidLock className="left-[810px] top-[374px] text-green-900 absolute top-7 text-2xl" />
             <input
               className="block border-b-2 text-green-900 border-green-900 focus:outline-none text-md p-2 m-1"
               type="password"

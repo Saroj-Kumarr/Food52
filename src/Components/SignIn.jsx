@@ -1,8 +1,7 @@
 import React from "react";
-import { app } from "firebase";
+import { app } from "../firebase";
 import { useState } from "react";
-import {  signInWithEmailAndPassword } from "firebase";
-import {  getAuth, } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import boy from "../Images/dboy1.jpg";
 import { MdEmail } from "react-icons/md";
@@ -14,7 +13,7 @@ function SignIn() {
 
   const navigate = useNavigate();
 
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   function handleInput(event) {
     let newInput = { [event.target.name]: event.target.value };
@@ -49,7 +48,7 @@ function SignIn() {
             <h1 className="font-bold mr-11 text-2xl">
               Sign <span className="text-green-900">In</span>
             </h1>
-            <MdEmail className="left-[850px] top-[314px] text-green-900 absolute top-7  text-xl" />
+            <MdEmail className="left-[840px] top-[314px] text-green-900 absolute top-7  text-xl" />
 
             <input
               className="block border-b-2 text-green-900 border-green-900 focus:outline-none text-md align-middle p-2 m-2"
@@ -62,7 +61,7 @@ function SignIn() {
                 handleInput(event);
               }}
             />
-            <BiSolidLock className="left-[850px] top-[361px] text-green-900 absolute top-7 text-2xl" />
+            <BiSolidLock className="left-[840px] top-[361px] text-green-900 absolute top-7 text-2xl" />
             <input
               className="block border-b-2 text-green-900 border-green-900 focus:outline-none text-md p-2 m-2"
               type="password"
