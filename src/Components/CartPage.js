@@ -4,7 +4,6 @@ import { ITEM_IMG_CDN_URL } from "../constants";
 import { FaRupeeSign } from "react-icons/fa";
 import { removeItem } from "./cartSlice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function CartPage() {

@@ -1,23 +1,10 @@
-/* Font family */
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
-
-/* Select all CSS Start*/
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "PT Sans", Calibri, sans-serif;
-  overflow-x: hidden;
-} */
 
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Select all CSS End*/
-
-/* create global variable with :root selector Start*/
 :root {
   --header-bg-color: rgb(255, 255, 255);
   --footer-bg-color: rgb(255, 255, 255);
@@ -41,9 +28,6 @@ a {
   --dark-blue: #070062;
   --font-color: #34495e;
 }
-/* create global variable with :root selector End*/
-
-/* Header CSS Start*/
 
 .header {
   display: flex;
@@ -60,7 +44,7 @@ a {
   top: 0;
   left: 0;
   overflow-y: hidden;
-  z-index:1;
+  z-index: 1;
 }
 
 .logo {
@@ -68,7 +52,6 @@ a {
   width: 130px;
 }
 
-/* nav items CSS start*/
 .nav-items > ul {
   list-style-type: none;
   display: flex;
@@ -105,13 +88,6 @@ a {
 .nav-items > ul > li .login-btn:hover {
 }
 
-/* nav items CSS End*/
-
-/* Header CSS End*/
-
-/* Body CSS Start*/
-
-/* search container CSS Start*/
 .search-container {
   margin: 100px auto 20px;
   display: flex;
@@ -123,8 +99,7 @@ a {
 .search-container .search-input {
   width: 40%;
   box-sizing: border-box;
-  /* border-bottom-left-radius: px;
-  border-top-left-radius: 5px; */
+
   background-color: #ffffff;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 8px 15px 8px 12px;
@@ -155,17 +130,12 @@ a {
   background-color: var(--dark-green);
 }
 
-/* Search error message css Start*/
 .error-container {
   text-align: center;
   font-size: large;
   margin: 20px 10px;
 }
-/* Search error message css End*/
 
-/* search container CSS End*/
-
-/* Restaurant cards CSS Start*/
 .restaurant-list {
   width: auto;
   display: flex;
@@ -237,9 +207,6 @@ a {
   padding: 2px 5px 3px 0;
 }
 
-/* Restaurant cards CSS End*/
-
-/* Restaurant Menu CSS Start */
 .restaurant-menu {
   margin-top: 80px;
   min-height: 80vh;
@@ -386,9 +353,6 @@ a {
   border-radius: 5px;
 }
 
-/* Restaurant Menu End Start */
-
-/*Shimmer Card CSS Start*/
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
@@ -418,9 +382,6 @@ a {
   height: 144px;
   width: 230px;
 }
-/*Shimmer Card CSS End*/
-
-/* Shimmer Menu Card CSS Start */
 
 .restaurant-summary .shimmer-img {
   height: 144px;
@@ -473,9 +434,7 @@ a {
   width: 20%;
   margin-top: 4px;
 }
-/* Shimmer Menu Card CSS End */
 
-/*Animation to Shimmer Component Card and Menu card Start*/
 .stroke {
   height: 15px;
   background: #d6dbdf;
@@ -506,11 +465,6 @@ a {
   margin: 20px 0px;
 }
 
-/* User Offline CSS End */
-
-/* Body CSS End*/
-
-/* Error page CSS Start */
 .error-page {
   text-align: center;
   background-color: var(--body-bg-color);
@@ -536,9 +490,6 @@ a {
   background-color: var(--dark-green);
 }
 
-/* Error page CSS End */
-
-/* About us page CSS Start */
 .about-profile-container {
   margin: 100px auto 0px;
   display: flex;
@@ -602,9 +553,6 @@ a {
   padding-right: 70px;
 }
 
-/* About us page CSS End */
-
-/* Profile Class page CSS Start */
 .profile-class-container {
   display: flex;
   flex-direction: row;
@@ -644,9 +592,6 @@ a {
   color: var(--dark-orange);
 }
 
-/* Profile Class page CSS End */
-
-/* Profile User Class page CSS Start */
 .profile-user-card {
   margin-top: 20px;
   display: flex;
@@ -675,9 +620,6 @@ a {
   margin-bottom: 1em;
 }
 
-/* Profile User Class page CSS End */
-
-/* ProfileRepo Class page CSS Start */
 .profile-repo-container {
   display: flex;
   flex-direction: column;
@@ -726,9 +668,7 @@ a {
 .profile-repo-items h3 span {
   padding-left: 5px;
 }
-/* ProfileRepo Class page CSS End */
 
-/* Social Profile Class page CSS Start */
 .social-media-container {
   font-size: 2em;
   text-align: center;
@@ -773,9 +713,7 @@ a {
 .email i {
   background-color: #ea4335;
 }
-/* Social Profile Class page CSS End */
 
-/* Contact us page CSS Start */
 .contact-container {
   display: flex;
   flex-wrap: wrap;
@@ -839,9 +777,6 @@ a {
   background-color: var(--dark-green);
 }
 
-/* Contact us page CSS End */
-
-/* Login page CSS Start */
 .login-container {
   width: 380px;
   margin: 40px auto 0;
@@ -905,9 +840,7 @@ a {
   font-size: 13px;
   color: red;
 }
-/* Login page CSS End */
 
-/* footer CSS Start*/
 .footer {
   display: flex;
   flex-wrap: wrap;
@@ -1121,7 +1054,6 @@ a {
 }
 
 .cart-paid h2 {
-  /* color: var(--font-color); */
   text-align: center;
   margin: 5px;
 }
@@ -1164,8 +1096,6 @@ a {
   font-size: 20px;
 }
 
-
 .swal2-popup {
   font-size: 17px !important;
-  
 }

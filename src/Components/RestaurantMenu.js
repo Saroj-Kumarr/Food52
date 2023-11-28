@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"; // import useParams for read `resId`
+import { useParams } from "react-router-dom"; 
 import {
   swiggy_menu_api_URL,
   IMG_CDN_URL,
@@ -8,18 +8,14 @@ import {
 } from "../constants";
 import { MenuShimmer } from "./Shimmer";
 import useResMenuData from "../Hooks/useResMenuData"; // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "./cartSlice";
-import { useEffect } from "react";
-import { useState } from "react";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const RestaurantMenu = () => {
-  // const [addSuccess, setAddSuccess] = useState();
-  // const [removeSuccess, setRemoveSuccess] = useState();
   const dispatch = useDispatch();
-  const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
+  const { resId } = useParams(); 
   const [restaurant, menuItems] = useResMenuData(
     swiggy_menu_api_URL,
     resId,

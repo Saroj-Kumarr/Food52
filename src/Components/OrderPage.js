@@ -1,37 +1,31 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import ordersuccess from "../Images/ordersuccess.jpg";
 import Swal from "sweetalert2";
 
 function OrderPage() {
   const [show, setShow] = useState();
 
+  useEffect(() => {
+    const test = setTimeout(() => {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton:
+            "bg-[#22c55e] p-1 px-3 m-1 shadow-2xl rounded-[10px] text-md text-white border-2 border-green-400",
+          cancelButton: "btn btn-danger",
+        },
+        buttonsStyling: false,
+      });
+      swalWithBootstrapButtons.fire(
+        "Thank You!",
+        "You order has been placed.",
+        "success"
+      );
+    }, 1000);
+  }, []);
 
-
-  useEffect(()=>{
-  const test = setTimeout(() => {
-    const swalWithBootstrapButtons = Swal.mixin({ 
-      customClass: {
-        confirmButton: "bg-[#22c55e] p-1 px-3 m-1 shadow-2xl rounded-[10px] text-md text-white border-2 border-green-400",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
-    swalWithBootstrapButtons.fire(
-      "Thank You!",
-      "You order has been placed.",
-      "success"
-    );
-  }, 1000);
-
-
-  },[])
-
-  setTimeout(()=>{
+  setTimeout(() => {
     setShow(true);
-  },3500)
-
-
+  }, 3500);
 
   return (
     <div className="flex items-center justify-center  relative w-full top-20 h-[89vh] bg-green-900 border-2 border-black">

@@ -7,7 +7,6 @@ import Body from "./Components/Body";
 import About from "./Components/About";
 import Error from "./Components/Error";
 import Contact from "./Components/Contact";
-import Login from "./Components/Login";
 import RestaurantMenu from "./Components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./Components/CartPage";
@@ -15,7 +14,6 @@ import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
 import OrderPage from "./Components/OrderPage";
 
-// call createBrowserRouter for routing different pages
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -26,11 +24,10 @@ const appRouter = createBrowserRouter([
     element: <SignIn />,
   },
   {
-    path: "/app", // show path for routing
-    element: <App />, // show component for particular path
-    errorElement: <Error />, // show error component for path is different
+    path: "/app",
+    element: <App />,
+    errorElement: <Error />,
     children: [
-      // show children component for routing
       {
         path: "/app",
         element: <Body />,
@@ -57,13 +54,9 @@ const appRouter = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "login",
-    element: <Login />,
-  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter} />); // render RouterProvider and use router as props and pass value appRouter
+root.render(<RouterProvider router={appRouter} />);
 
 reportWebVitals();

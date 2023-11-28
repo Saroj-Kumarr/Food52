@@ -1,8 +1,7 @@
 import ErrorImage from "../Images/404 Error.jpg";
-import { useRouteError, Link } from "react-router-dom"; // import useRouteError for routing error
+import { useRouteError, Link } from "react-router-dom";
 
 const Error = () => {
-  // call useRouteError so we can access error data while routing
   const err = useRouteError();
   return (
     <div className="error-page">
