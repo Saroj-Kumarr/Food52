@@ -55,7 +55,6 @@ export const MenuShimmer = () => {
 const Shimmer = () => {
   return (
     <div className="shimmer-container">
-      {/* create a new Array instance using Array() constructor and map through every element of array */}
       {Array(shimmer_card_unit)
         .fill("")
         .map((element, index) => {
