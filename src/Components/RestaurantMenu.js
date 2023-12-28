@@ -7,7 +7,7 @@ import {
   RESTAURANT_TYPE_KEY,
 } from "../constants";
 import { MenuShimmer } from "./Shimmer";
-import useResMenuData from "../Hooks/useResMenuData"; // imported custom hook useResMenuData which gives restaurant Menu data from swigy api
+import useResMenuData from "../Hooks/useResMenuData"; 
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "./cartSlice";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";

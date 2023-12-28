@@ -34,7 +34,7 @@ function SignIn() {
   return (
     <div className="flex bg-green-900 h-[100vh] text-center border-2 border-black justify-center items-center">
       <div className="flex border-4 p-8 rounded-[25px] shadox-xl hover:shadow-2xl bg-white border-none duration-500 z-10">
-        <div class="w-96 overflow-y-hidden	">
+        <div className="w-96 overflow-y-hidden	">
           <img
             className="absolute z-20 w-[330px] left-[290px] top-[310px] -rotate-[470deg]"
             src={leaf}
@@ -43,7 +43,7 @@ function SignIn() {
           <img src={boy} alt="delivery-boy" className="relative" />
         </div>
 
-        <div class="p-5">
+        <div className="p-5">
           <form>
             <h1 className="font-bold mr-11 text-2xl">
               Sign <span className="text-green-900">In</span>

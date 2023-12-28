@@ -8,7 +8,7 @@ export const ITEM_IMG_CDN_URL =
 
 // Swiggy API to get Restaurant data
 export const swiggy_api_URL =
-  "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+  "https://www.swiggy.com/mapi/homepage/getCards?lat=30.7335152&lng=76.7826359";
 
 // Swiggy API to get Restaurant Menu data
 export const swiggy_menu_api_URL =
